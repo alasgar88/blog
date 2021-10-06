@@ -12,3 +12,10 @@
      + __Windows (myenv\Scripts\activate), unix (source myenv/bin/activate)__
    + install dependencies
      + __pip install -r requirements.txt__ 
+
+3. Create sqlite database
+   + Run command below to create sqlite database
+     + __python manage.py migrate__
+   + Fill sqlite database with data from datadump.json
+     + __python manage.py loaddata datadump.json__  
+
