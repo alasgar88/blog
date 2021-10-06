@@ -23,6 +23,6 @@
 + ___Login to admin panel as superuser___
   + __http://localhost:8000/admin/__
   + __login: superuser__
-      __password: superuser__
+    __password: superuser__
 
 
