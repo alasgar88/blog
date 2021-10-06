@@ -17,5 +17,12 @@
    + Run command below to create sqlite database
      + __python manage.py migrate__
    + Fill sqlite database with data from datadump.json
-     + __python manage.py loaddata datadump.json__  
+     + __python manage.py loaddata datadump.json__
+
+---
++ ___Login to admin panel as superuser___
+  + __http://localhost:8000/admin/__
+  + __login: superuser__
+      __password: superuser__
+
 
