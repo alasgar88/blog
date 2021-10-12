@@ -11,7 +11,6 @@ from django.db.models import Count, Q
 def post_list(request, tag_slug=None):
     object_list = Post.published.all()
     tag = None
-
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         object_list = object_list.filter(tags__in=[tag])
@@ -21,25 +20,17 @@ def post_list(request, tag_slug=None):
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
-        # If page is not an integ       # If page is not an integer deliver the first page
+        # If page is not an integer deliver the first page
         posts = paginator.page(1)
     except EmptyPage:
         # If page is out of range deliver last page of results
         posts = paginator.page(paginator.num_pages)
-    return render(request, 'blog/post/list.html', {'page': page,
-                                                   'posts': posts,
+    return render(request, 'blog/post/list.html', {'posts': posts,
                                                    'tag': tag})
 
 
-# class PostListView(ListView):
-#     queryset = Post.published.all()
-#     context_object_name = 'posts'
-#     paginate_by = 2
-#     template_name = 'blog/post/list.html'
-
-
-def post_detail(request, year, month, day, post):
-    post = get_object_or_404(Post, slug=post,
+def post_detail(request, year, month, day, post_slug):
+    post = get_object_or_404(Post, slug=post_slug,
                              status='published',
                              publish__year=year,
                              publish__month=month,
